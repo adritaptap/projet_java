@@ -1,0 +1,12 @@
+FROM debian:jessie
+
+MAINTAINER adrien juhem <adrien.juhem@gmail.com>
+
+
+RUN apt-get update && apt-get install -y tomcat8 && apt-get install -y haveged
+RUN apt-get install net-tools && apt-get install -y wget 
+
+EXPOSE 8088
+
+CMD service tomcat8 start
+
