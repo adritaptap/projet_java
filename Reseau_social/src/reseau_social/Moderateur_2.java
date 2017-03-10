@@ -9,19 +9,23 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Adrien.JUHEM
- * 
- * class User à part qui a pour proporiété 
- * name
- * last name
- * Year of birht
+ * @author adrien.juhem
  */
-public class User {
-    protected String name;
-    protected String lastname;
-    protected int yearOfBirth;
-    protected ArrayList<Message> messageList = new ArrayList();
-    protected ArrayList<Friend> friendList = new ArrayList();
+public class Moderateur_2 extends User{
+    
+   private int status = 2;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Moderateur_2(String name, String lastname, int yearOfBirth) {
+        super(name, lastname, yearOfBirth);
+    }
 
     public String getName() {
         return name;
@@ -46,34 +50,21 @@ public class User {
     public void setYearOfBirth(int yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
     }
-    
-    public void setMessageList(Message message) {
-        this.messageList.add(message);
-    }
 
     public ArrayList<Message> getMessageList() {
         return messageList;
     }
-    
-     public void setFriendList(Friend friend) {
-        this.friendList.add(friend);
+
+    public void setMessageList(ArrayList<Message> messageList) {
+        this.messageList = messageList;
     }
-     
+
     public ArrayList<Friend> getFriendList() {
         return friendList;
     }
-    
-    public User(String name, String lastname, int yearOfBirth) {
-        this.name = name;
-        this.lastname = lastname;
-        this.yearOfBirth = yearOfBirth;
-    }
 
-    public User() {
+    public void setFriendList(ArrayList<Friend> friendList) {
+        this.friendList = friendList;
     }
-
-    public User(String name, String lastname) {
-        this.name = name;
-        this.lastname = lastname;
-    } 
+   
 }

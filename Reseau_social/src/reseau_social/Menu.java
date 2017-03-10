@@ -65,10 +65,21 @@ public class Menu {
                     isNumber = false;
                 }
             }while(!(isNumber));
+           
             scan.nextLine();
-            User user = new User(nameUser, lastnameUser, yearOfBirthUser);
-            System.out.println("Bonjour " + user.getName() + " " + user.getLastname() + ", vous avez " + (2017 - user.getYearOfBirth()) + " ans");
+            System.out.println("Etes-vous Moderateur ? N/Y");
+            char mederator = scan.next().charAt(0);
+            scan.nextLine();
             
-            return user;
+           if (mederator == 'N'){ 
+                User user = new User(nameUser, lastnameUser, yearOfBirthUser);
+                System.out.println("Bonjour " + user.getName() + " " + user.getLastname() + ", vous avez " + (2017 - user.getYearOfBirth()) + " ans");
+                 return user; 
+           } else {
+                Moderateur_2 user = new Moderateur_2(nameUser, lastnameUser, yearOfBirthUser);
+                System.out.println("Bonjour " + user.getName() + " " + user.getLastname() + ", vous avez " + (2017 - user.getYearOfBirth()) + " ans");
+                 return user; 
+           }
+                
     }
 }
