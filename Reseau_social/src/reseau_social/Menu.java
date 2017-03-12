@@ -20,6 +20,7 @@ public class Menu {
         System.out.println("Afficher votre profil ? /////////////////// 'profile'");
         System.out.println("Modifier vos infos personnelles ? ///////// 'setting'");
         System.out.println("Ecrire un message ? /////////////////////// 'write'");
+        System.out.println("Effacer un message ? ///////////////////// 'remove'");
         System.out.println("Afficher un message ? ///////////////////// 'read'");
         System.out.println("Ajouter un ami ? ////////////////////////// 'add'");
         System.out.println("Afficher le nom d’un ami ? //////////////// 'friends'");
@@ -44,6 +45,12 @@ public class Menu {
             
             boolean isNumber;
             int yearOfBirthUser = 0;
+            UserList userList = new UserList();
+            User toto = new User("toto", "titi", 1999);
+            userList.setUserList(toto);
+            for (User user : userList.getUserList()) {
+            System.out.println(user.getName()); 
+            }
             Scanner scan = new Scanner(System.in);
     
             System.out.println("Veuillez vous enregistrer");         
@@ -73,10 +80,12 @@ public class Menu {
             
            if (mederator == 'N'){ 
                 User user = new User(nameUser, lastnameUser, yearOfBirthUser);
+                userList.setUserList(user);
                 System.out.println("Bonjour " + user.getName() + " " + user.getLastname() + ", vous avez " + (2017 - user.getYearOfBirth()) + " ans");
                  return user; 
            } else {
                 Moderateur_2 user = new Moderateur_2(nameUser, lastnameUser, yearOfBirthUser);
+                userList.setUserList(user);
                 System.out.println("Bonjour " + user.getName() + " " + user.getLastname() + ", vous avez " + (2017 - user.getYearOfBirth()) + " ans");
                  return user; 
            }
