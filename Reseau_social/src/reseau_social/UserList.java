@@ -72,7 +72,7 @@ public class UserList {
         }
     }*/
     
-   static public void displayMessagesByUser (){
+   static public int displayMessagesByUser (){
         Scanner scan = new Scanner(System.in);
         int nbUser = 0;
         boolean isNumber;
@@ -100,10 +100,11 @@ public class UserList {
                 System.out.println(j + ". titre: " + mess.getTitle() + ". contenu: " + mess.getContent());
                 j++;
             }
-            
+        
         } else {
             System.out.println("Il n'y a pas d'utilisateur à supprimer");
         }
+        return nbUser;
     }
    
    static public void removeMessageByUser () {
@@ -114,10 +115,10 @@ public class UserList {
      
        
        if (UserList.getUserList().size() > 0) {
-          UserList.displayMessagesByUser();
+          int nbUser = UserList.displayMessagesByUser();
           
            System.out.println("Selectionnez un message à effacer :");
-           System.out.println("!!!!!!!!!!!" + UserList.getUserList().get(0).getMessageList().get(1));
+           //System.out.println("!!!!!!!!!!!" + UserList.getUserList().get(0).getMessageList().get(1));
            do {
 
                if (scan.hasNextInt()) {
@@ -129,10 +130,10 @@ public class UserList {
                    isNumber = false;
                }
            } while (!(isNumber));
-           int nb = nbMessage - 1;
+           int nbMess = nbMessage - 1;
 
-           User usr = UserList.getUserList().get(nb);
-           usr.getMessageList().remove(nb);
+           User usr = UserList.getUserList().get(nbUser - 1);
+           usr.getMessageList().remove(nbMess);
            
            System.out.println("Le message a bien été effacé."); 
            

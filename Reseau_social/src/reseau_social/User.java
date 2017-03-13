@@ -127,30 +127,30 @@ public class User {
         int changeYearOfBirth = 0;
         
         System.out.println("Gestion de votre Profile ");
-        System.out.println("nouveau prénom : ");
+        System.out.println("Veuillez saisir votre prenom : ");
        
         String changeName = scan.nextLine();
 
-        System.out.println("nouveau nom : ");
+        System.out.println("Veuillez saisir votre nom : ");
         String changeLastname = scan.nextLine();
 
-        System.out.println("nouvelle date de naissance : ");
+        System.out.println("veuillez saisir votre année de naissance : ");
 
-       do {  
+       
 
-            if(scan.hasNextInt()){      
+            try {      
                 changeYearOfBirth = scan.nextInt();
-                isNumber = true;
-                }else{
-                System.out.println("Veuillez rentrer une date valide !");
                 scan.nextLine();
-                isNumber = false;
+                this.setYearOfBirth(changeYearOfBirth);
+                }catch(Exception e){
+                System.out.println("Date invalide !");
+                
                 }
-                }while(!(isNumber));
+               
 
             this.setName(changeName);
             this.setLastname(changeLastname);
-            this.setYearOfBirth(changeYearOfBirth);
+            
    }
     
     public void presentation () {
