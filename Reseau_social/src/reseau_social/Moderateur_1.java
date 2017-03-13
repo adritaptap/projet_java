@@ -5,19 +5,16 @@
  */
 package reseau_social;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author adrien.juhem
  */
-public class Moderateur_2 extends Moderateur_1{
-    
+public class Moderateur_1 extends User{
 
-    public Moderateur_2(String name, String lastname, int yearOfBirth) {
+    public Moderateur_1(String name, String lastname, int yearOfBirth) {
         super(name, lastname, yearOfBirth);
     }
-    public Moderateur_2(){
-        
-    }
+
+    public Moderateur_1() {
+    }    
 }

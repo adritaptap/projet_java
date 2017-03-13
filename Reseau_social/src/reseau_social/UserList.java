@@ -6,21 +6,140 @@
 package reseau_social;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
  * @author adrien
  */
 public class UserList {
-    private ArrayList<User> userList = new ArrayList();
+    
+    
+    static ArrayList<User> userList = new ArrayList();
 
-    public ArrayList<User> getUserList() {
+    public UserList() {
+    }  
+    
+    static public ArrayList<User> getUserList() {
         return userList;
     }
 
-    public void setUserList(User user) {
-        this.userList.add(user);
+    static public void setUserList(User user) {
+        UserList.userList.add(user);
     }
+    static public void showUsers (){
+        int i = 1;
+        for(User user : UserList.getUserList()) {
+            System.out.println("amis N°" + i + " : " + user.getName() + " " + user.getLastname());
+            i++;
+        }
+    }
+    static public void removeUser (){
+        Scanner scan = new Scanner(System.in);
+        int nbUser = 0;
+        boolean isNumber;
+                
+        if (UserList.getUserList().size() > 0) {
+            UserList.showUsers();
+            System.out.println("Quel utilisateur souhaitez vous supprimer ?");
+            do {  
 
+                if(scan.hasNextInt()){      
+                    nbUser = scan.nextInt();
+                    isNumber = true;
+               }else{
+                    System.out.println("Veuillez rentrer un numero valide !");
+                    scan.nextLine();
+                    isNumber = false;
+                    }
+            }while(!(isNumber));
+            int nb = nbUser - 1;
+            UserList.getUserList().remove(nb);
+            System.out.println("L'utilisateur a bien été effacé.");
+        } else {
+            System.out.println("Il n'y a pas d'utilisateur à supprimer");
+        }
+    }
     
+    /*static public void displayMessagesByUser () {
+        
+        int j = 1;
+        for (User usr : UserList.getUserList()) {
+            for (Message mess : usr.getMessageList()) {
+                System.out.println(j + ". titre: " + mess.getTitle() + ". contenu: " + mess.getContent());
+                j++;
+            }
+        }
+    }*/
+    
+   static public void displayMessagesByUser (){
+        Scanner scan = new Scanner(System.in);
+        int nbUser = 0;
+        boolean isNumber;
+        int j = 1;   
+        
+        if (UserList.getUserList().size() > 0) {
+            UserList.showUsers();
+            System.out.println("Gestion des messages :");
+            System.out.println("Selectionnez un utilisateurs");
+            do {  
+
+                if(scan.hasNextInt()){      
+                    nbUser = scan.nextInt();
+                    isNumber = true;
+               }else{
+                    System.out.println("Veuillez rentrer un numero valide !");
+                    scan.nextLine();
+                    isNumber = false;
+                    }
+            }while(!(isNumber));
+            int nb = nbUser - 1;
+            
+            User usr  = UserList.getUserList().get(nb);
+            for (Message mess : usr.getMessageList()) {
+                System.out.println(j + ". titre: " + mess.getTitle() + ". contenu: " + mess.getContent());
+                j++;
+            }
+            
+        } else {
+            System.out.println("Il n'y a pas d'utilisateur à supprimer");
+        }
+    }
+   
+   static public void removeMessageByUser () {
+       
+       Scanner scan = new Scanner(System.in);
+       int nbMessage = 0;
+       boolean isNumber;
+     
+       
+       if (UserList.getUserList().size() > 0) {
+          UserList.displayMessagesByUser();
+          
+           System.out.println("Selectionnez un message à effacer :");
+           System.out.println("!!!!!!!!!!!" + UserList.getUserList().get(0).getMessageList().get(1));
+           do {
+
+               if (scan.hasNextInt()) {
+                   nbMessage = scan.nextInt();
+                   isNumber = true;
+               } else {
+                   System.out.println("Veuillez rentrer un numero valide !");
+                   scan.nextLine();
+                   isNumber = false;
+               }
+           } while (!(isNumber));
+           int nb = nbMessage - 1;
+
+           User usr = UserList.getUserList().get(nb);
+           usr.getMessageList().remove(nb);
+           
+           System.out.println("Le message a bien été effacé."); 
+           
+       } else {
+           System.out.println("Il n'y a pas d'utilisateur à supprimer");
+       }
+       
+   }
+       
 }

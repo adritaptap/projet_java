@@ -5,6 +5,8 @@
  */
 package reseau_social;
 
+import java.util.Scanner;
+
 /**
  *
  * @author adrien.juhem
@@ -33,4 +35,5 @@ public class Message {
         this.title = title;
         this.content = content;
     }   
+   
 }

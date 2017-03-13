@@ -24,6 +24,11 @@ public class Reseau_social {
         Scanner scan = new Scanner(System.in);
         
         char answer;
+        
+        
+        
+                      
+      
         /**
          * First: a do while loop to set a new user
          */
@@ -33,15 +38,21 @@ public class Reseau_social {
              * a do while loop to repeat questions until QUIT
              */
                             
-            Choice.various(); 
-           
+            User response = Choice.various(); 
+            UserList.setUserList(response);
+            
+            for (User unit : UserList.getUserList()) {
+                System.out.println(unit.getName()); 
+            } 
+                      
             do {
                 
                  answer = Menu.logoutChoice();
                  
-            } while(answer != 'O' && answer != 'N');
-            
-        } while(answer == 'O');
+            } while(answer != 'Y' && answer != 'N');
+                         
+        } while(answer == 'Y');
+        
         
        System.out.println("Vous voulez partir ? A bientôt !");
     }
