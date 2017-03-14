@@ -118,7 +118,7 @@ public class UserList {
           int nbUser = UserList.displayMessagesByUser();
           
            System.out.println("Selectionnez un message à effacer :");
-           //System.out.println("!!!!!!!!!!!" + UserList.getUserList().get(0).getMessageList().get(1));
+           
            do {
 
                if (scan.hasNextInt()) {

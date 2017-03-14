@@ -5,7 +5,6 @@
  */
 package reseau_social;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -28,7 +27,7 @@ public class Choice {
         
         do{ 
             Menu.menuChoice();
-            System.out.println(user.getClass().getSimpleName());
+           // System.out.println(user.getClass().getSimpleName());
             
              if ((user.getClass().getSimpleName().equals("Moderateur_2")) || (user.getClass().getSimpleName().equals("Moderateur_1"))) {
         System.out.println();
@@ -71,7 +70,7 @@ public class Choice {
                             break;
                         case "add": 
                             System.out.println("********************************");
-                            user.addFriend();
+                            user.addPerson();
                             System.out.println("********************************");
                             break;
                         case "friends": 

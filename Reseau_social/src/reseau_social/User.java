@@ -8,6 +8,7 @@ package reseau_social;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
  *
  * @author Adrien.JUHEM
@@ -17,12 +18,10 @@ import java.util.Scanner;
  * last name
  * Year of birht
  */
-public class User {
+public class User extends Person implements Relation{
     Scanner scan = new Scanner(System.in);
 
-    protected String name;
-    protected String lastname;
-    protected int yearOfBirth;
+    
     protected ArrayList<Message> messageList = new ArrayList();
     protected ArrayList<Friend> friendList = new ArrayList();
     
@@ -32,38 +31,13 @@ public class User {
         this.yearOfBirth = yearOfBirth;
     }
 
-    public User() {
-    }
+    public User() {}
 
     public User(String name, String lastname) {
         this.name = name;
         this.lastname = lastname;
     } 
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public int getYearOfBirth() {
-        return yearOfBirth;
-    }
-
-    public void setYearOfBirth(int yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
-    }
-    
+       
     public void setMessageList(Message message) {
         this.messageList.add(message);
     }
@@ -207,7 +181,7 @@ public class User {
         } 
      }
      
-    public void addFriend (){
+    public void addPerson (){
         System.out.println("Ajouter un ami ");
 
         System.out.println("Quel est son prénom ?");

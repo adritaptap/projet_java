@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="UML Class Diagram">
+  <ClassDiagramComponents>
+    <Class name="abstract Person" package="" visibility="public" xPosition="761.0" yPosition="48.0">
+      <Fields>
+        <Field name="name" type="Object" visibility="private"/>
+        <Field name="lastname" type="Object" visibility="private"/>
+        <Field name="birthdate" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="User" package="" visibility="public" xPosition="1311.0" yPosition="120.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Moderateur_1" package="" visibility="public" xPosition="918.0" yPosition="278.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Moderateur_2" package="" visibility="public" xPosition="964.0" yPosition="446.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Employee" package="" visibility="public" xPosition="262.0" yPosition="60.0">
+      <Fields>
+        <Field name="pay" type="Object" visibility="private"/>
+        <Field name="contract" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="work" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="Salaried" package="" visibility="public" xPosition="703.0" yPosition="390.0">
+      <Methods>
+        <Method name="getpaid" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="CEO" package="" visibility="public" xPosition="555.0" yPosition="571.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="Relation" package="" visibility="public" xPosition="1173.0" yPosition="669.0">
+      <Methods>
+        <Method name="addperson" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Employee" target="abstract Person"/>
+    <IsRelation name="is" source="Moderateur_2" target="Moderateur_1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="User" target="Relation"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Employee" target="Salaried"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="CEO" target="Relation"/>
+    <IsRelation name="is" source="User" target="abstract Person"/>
+    <IsRelation name="is" source="Moderateur_1" target="User"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Moderateur_1" target="Salaried"/>
+    <IsRelation name="is" source="CEO" target="Employee"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
