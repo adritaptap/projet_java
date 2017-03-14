@@ -15,15 +15,15 @@ public class Choice {
     
     /**
      * display reponse depend to the choice.
+     * @return 
      */
     static public User various(){
         
-        User user = Menu.start();
+        User user = Menu.stepOne();
                
         boolean logout = false;
         Scanner scan = new Scanner(System.in);
-        boolean isNumber;
-        int changeYearOfBirth = 0;
+       
         
         do{ 
             Menu.menuChoice();
@@ -81,6 +81,9 @@ public class Choice {
                         case "quit": 
                             System.out.println("********************************");
                             System.out.println("Vous nous quittez déjà ");
+                            if ((user.getClass().getSimpleName().equals("Moderateur_2")) || (user.getClass().getSimpleName().equals("Moderateur_1"))) {
+                                user.getPaid();
+                            }
                             logout = true;
                             System.out.println("********************************");
                             break;                          

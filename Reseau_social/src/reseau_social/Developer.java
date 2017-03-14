@@ -7,8 +7,15 @@ package reseau_social;
 
 /**
  *
- * @author adrien.juhem
+ * @author adrien
  */
-public interface Salaried {
-    public void getPaid ();
+public class Developer extends Employee {
+
+    public Developer() {
+    }
+
+    public Developer(int pay, String contract) {
+        super(pay, contract);
+    }
+    
 }

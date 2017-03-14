@@ -54,10 +54,7 @@ public class User extends Person implements Relation{
         return friendList;
     }
     
-    public User create(){
-            boolean isNumber;
-            int yearOfBirthUser = 0;
-            
+    public User create(){           
     
             System.out.println("Veuillez vous enregistrer");         
             System.out.println("Veuillez saisir un prenom :");
@@ -67,19 +64,7 @@ public class User extends Person implements Relation{
             String lastnameUser = scan.nextLine();
             
             System.out.println("Veuillez saisir votre date de naissance :");
-            
-            do {     
-                if(scan.hasNextInt()){      
-                    yearOfBirthUser = scan.nextInt();
-                    isNumber = true;
-                }else{
-                    System.out.println("Veuillez rentrer une date !");
-                    scan.nextLine();
-                    isNumber = false;
-                }
-            }while(!(isNumber));
-           
-            scan.nextLine();
+            int yearOfBirthUser = Control.intControl("Veuillez rentrer une date !");
             
             User user = new User (nameUser, lastnameUser, yearOfBirthUser);
             
@@ -97,9 +82,6 @@ public class User extends Person implements Relation{
   
     public void update (){
         
-        boolean isNumber;
-        int changeYearOfBirth = 0;
-        
         System.out.println("Gestion de votre Profile ");
         System.out.println("Veuillez saisir votre prenom : ");
        
@@ -109,7 +91,7 @@ public class User extends Person implements Relation{
         String changeLastname = scan.nextLine();
 
         System.out.println("veuillez saisir votre année de naissance : ");
-
+        int changeYearOfBirth = 0;
        
 
             try {      
@@ -117,8 +99,7 @@ public class User extends Person implements Relation{
                 scan.nextLine();
                 this.setYearOfBirth(changeYearOfBirth);
                 }catch(Exception e){
-                System.out.println("Date invalide !");
-                
+                changeYearOfBirth = Control.intControl("Veuillez entrer une date valide !");
                 }
                
 
@@ -159,22 +140,12 @@ public class User extends Person implements Relation{
     }
     
      public void deleteMessage () {
-        int nbMessage = 0;
-        boolean isNumber;
+        
         if (this.getMessageList().size() > 0) {
 
             System.out.println("quel message souhaitez vous effacer ?");
-            do {  
-
-                if(scan.hasNextInt()){      
-                    nbMessage = scan.nextInt();
-                    isNumber = true;
-               }else{
-                    System.out.println("Veuillez rentrer un numero valide !");
-                    scan.nextLine();
-                    isNumber = false;
-                    }
-            }while(!(isNumber));
+            int nbMessage = Control.intControl("Veuillez rentrer un numero valide !");
+            
             int nb = nbMessage - 1;
             this.getMessageList().remove(nb);
             System.out.println("Le message a bien été effacé.");
@@ -208,5 +179,9 @@ public class User extends Person implements Relation{
         } else {
             System.out.println("Vous n'avez aucun amis pour le moment");
         }
+    }
+
+    void getPaid() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

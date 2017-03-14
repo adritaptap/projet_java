@@ -5,7 +5,6 @@
  */
 package reseau_social;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -19,5 +18,9 @@ public class Moderateur_2 extends Moderateur_1{
     }
     public Moderateur_2(){
         
+    }
+    
+    public void getPaid () {
+        System.out.println("vous avez gagné de 100€ en bons d'achats pour votre travail");
     }
 }

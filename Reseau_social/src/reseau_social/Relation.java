@@ -11,4 +11,5 @@ package reseau_social;
  */
 interface Relation {
     public void addPerson();
+    
 }

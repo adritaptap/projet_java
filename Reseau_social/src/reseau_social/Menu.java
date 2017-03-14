@@ -42,45 +42,56 @@ public class Menu {
         return answerLogout;
     }
     
-    static User start () {
-           
+    static void start (){
+        
         Scanner scan = new Scanner(System.in);
-        int nbModerator = 0;
-        boolean isNumber;
+        System.out.println("Etes-vous membre de l'entreprise ? N/Y");
+        char company = scan.next().charAt(0);
+        scan.nextLine();
+        if (company == 'Y'){
+            
+            
+            MenuCompany.choice();
+            System.exit(0);
+        }
+    }    
+    static User stepOne () {
+        
+        Menu.start();
+        Scanner scan = new Scanner(System.in);
+        
         System.out.println("Etes-vous Moderateur ? N/Y");
         char mederator = scan.next().charAt(0);
         scan.nextLine();
-         User user;   
+         //User user;   
            if (mederator == 'N'){ 
                
-                user = new User();
+                User user = new User();
+                user.update();
+                user.presentation();
+                return user;
            
            } else {
                
                System.out.println("Etes-vous un moderateur de niveau 1 ou 2 ? 1/2");
-               
-               do {  
-
-                if(scan.hasNextInt()){      
-                    nbModerator = scan.nextInt();
-                    isNumber = true;
-               }else{
-                    System.out.println("Veuillez rentrer un numero valide !");
-                    scan.nextLine();
-                    isNumber = false;
-                    }
-            }while(!(isNumber));
+               int nbModerator = Control.intControl("Veuillez entrer 1 ou 2");
                
                 if(nbModerator == 2) {
-                    user = new Moderateur_2();
+                    Moderateur_2 user = new Moderateur_2();
+                    user.update();
+                    user.presentation();
+                    return user;
                 } else {
-                    user = new Moderateur_1();
+                    Moderateur_1 user = new Moderateur_1();
+                    user.update();
+                    user.presentation();
+                    return user;
                 }
                 
            }
-           user.update();
-           user.presentation();
-           return user;
+         //  user.update();
+        //   user.presentation();
+        //   return user;
     }  
     
 }

@@ -9,7 +9,7 @@ package reseau_social;
  *
  * @author adrien.juhem
  */
-public class Employee extends Person{
+public class Employee extends Person implements Salaried{
     private int pay;
     private String contract;
     
@@ -41,5 +41,8 @@ public class Employee extends Person{
         this.contract = contract;
     }
     
+     public void getPaid () {
+        System.out.println("vous avez gagné "+ this.pay +"€ pour votre travail");
+    }
     
 }

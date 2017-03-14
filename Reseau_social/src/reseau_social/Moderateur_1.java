@@ -9,12 +9,16 @@ package reseau_social;
  *
  * @author adrien.juhem
  */
-public class Moderateur_1 extends User{
+public class Moderateur_1 extends User implements Salaried {
 
     public Moderateur_1(String name, String lastname, int yearOfBirth) {
         super(name, lastname, yearOfBirth);
     }
 
     public Moderateur_1() {
-    }    
+    }  
+    
+    public void getPaid () {
+        System.out.println("vous avez gagné de 50€ en bons d'achats pour votre travail");
+    }
 }
