@@ -9,7 +9,7 @@ package reseau_social;
  *
  * @author adrien.juhem
  */
-abstract class Person {
+    abstract public class Person {
     protected String name;
     protected String lastname;
     protected int yearOfBirth;

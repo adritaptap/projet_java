@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package reseau_social.company;
 
 /**
  *
  * @author adrien.juhem
  */
-public interface Relation {
-    
-    public void addPerson();
+public interface Salaried {
+    public void getPaid ();
 }

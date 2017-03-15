@@ -74,25 +74,14 @@ public class UserList {
     
    static public int displayMessagesByUser (){
         Scanner scan = new Scanner(System.in);
-        int nbUser = 0;
-        boolean isNumber;
         int j = 1;   
-        
+        int nbUser = 0;
         if (UserList.getUserList().size() > 0) {
             UserList.showUsers();
             System.out.println("Gestion des messages :");
             System.out.println("Selectionnez un utilisateurs");
-            do {  
-
-                if(scan.hasNextInt()){      
-                    nbUser = scan.nextInt();
-                    isNumber = true;
-               }else{
-                    System.out.println("Veuillez rentrer un numero valide !");
-                    scan.nextLine();
-                    isNumber = false;
-                    }
-            }while(!(isNumber));
+            nbUser = Control.intControl("Veuillez rentrer un numero valide !");
+            
             int nb = nbUser - 1;
             
             User usr  = UserList.getUserList().get(nb);
@@ -109,27 +98,14 @@ public class UserList {
    
    static public void removeMessageByUser () {
        
-       Scanner scan = new Scanner(System.in);
-       int nbMessage = 0;
-       boolean isNumber;
-     
+       Scanner scan = new Scanner(System.in);  
        
        if (UserList.getUserList().size() > 0) {
-          int nbUser = UserList.displayMessagesByUser();
+           int nbUser = UserList.displayMessagesByUser();
           
            System.out.println("Selectionnez un message à effacer :");
+           int nbMessage = Control.intControl("Veuillez rentrer un numero valide !");
            
-           do {
-
-               if (scan.hasNextInt()) {
-                   nbMessage = scan.nextInt();
-                   isNumber = true;
-               } else {
-                   System.out.println("Veuillez rentrer un numero valide !");
-                   scan.nextLine();
-                   isNumber = false;
-               }
-           } while (!(isNumber));
            int nbMess = nbMessage - 1;
 
            User usr = UserList.getUserList().get(nbUser - 1);

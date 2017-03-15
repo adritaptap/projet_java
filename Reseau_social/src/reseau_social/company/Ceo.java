@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reseau_social;
+package reseau_social.company;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import reseau_social.Control;
 
 /**
  *
@@ -50,7 +52,7 @@ public class Ceo extends Employee implements Relation {
         dev.setLastname(lastnameD);
         dev.setYearOfBirth(yearOfBirthD);
         employeeList.add(dev);
-        System.out.println(dev.getName() + " " + dev.getLastname() + " a bien été embauché en" +dev.getContract() + ".");
+        System.out.println(dev.getName() + " " + dev.getLastname() + " a bien été embauché en " + dev.getContract() + ", pour " + dev.getPay() + " € mensuel.");
     }
     public void showEmployee() {
         int i = 1;
@@ -89,7 +91,7 @@ public class Ceo extends Employee implements Relation {
         System.out.println("****************************************************"); 
         System.out.println(); 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("Vous êtes " + boss.getName() + " " + boss.getLastname() +" et vous avez " + boss.getYearOfBirth() +" ans");
+        System.out.println("Vous êtes " + boss.getName() + " " + boss.getLastname() +" et vous avez " + (2017 - boss.getYearOfBirth()) +" ans");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println(); 
         return boss;

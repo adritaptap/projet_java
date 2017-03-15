@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reseau_social;
+package reseau_social.company;
 
+import reseau_social.Person;
 /**
  *
  * @author adrien.juhem

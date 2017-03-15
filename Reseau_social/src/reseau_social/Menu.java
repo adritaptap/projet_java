@@ -5,6 +5,7 @@
  */
 package reseau_social;
 
+import reseau_social.company.MenuCompany;
 import java.util.Scanner;
 
 /**

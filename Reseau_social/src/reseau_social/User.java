@@ -5,6 +5,8 @@
  */
 package reseau_social;
 
+
+import reseau_social.company.Relation;
 import java.util.ArrayList;
 import java.util.Scanner;
 

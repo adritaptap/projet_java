@@ -5,6 +5,8 @@
  */
 package reseau_social;
 
+import reseau_social.company.Salaried;
+
 /**
  *
  * @author adrien.juhem
