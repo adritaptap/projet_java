@@ -25,7 +25,7 @@ public class User extends Person implements Relation{
 
     
     protected ArrayList<Message> messageList = new ArrayList();
-    protected ArrayList<Friend> friendList = new ArrayList();
+    protected ArrayList<User> friendList = new ArrayList();
     
      public User(String name, String lastname, int yearOfBirth) {
         this.name = name;
@@ -48,11 +48,11 @@ public class User extends Person implements Relation{
         return messageList;
     }
     
-     public void setFriendList(Friend friend) {
+     public void setFriendList(User friend) {
         this.friendList.add(friend);
     }
      
-    public ArrayList<Friend> getFriendList() {
+    public ArrayList<User> getFriendList() {
         return friendList;
     }
     
@@ -120,8 +120,9 @@ public class User extends Person implements Relation{
             int i = 1;
             for (Message mess : this.getMessageList()) {
 
-                System.out.println("le message n°"+ i + " est : " + mess.getTitle());
+                System.out.println("le message n°"+ i + " est : " + mess.getTitle() + " destiné à " + mess.getReciever() );
                 System.out.println("le contenu est : " + mess.getContent());
+                
                 i++;
             }                           
 
@@ -130,14 +131,17 @@ public class User extends Person implements Relation{
         }
     }
     
-    public void createMessage () {
+    public void createMessage (String sender) {
         System.out.println("Donnez un titre à votre message :");
         String title = scan.nextLine();
 
         System.out.println("Ecrivez votre message :");
         String content = scan.nextLine();
-
-        Message message = new Message(title, content);
+                
+        System.out.println("Quel est le nom du destinataire ?");
+        String reciever = scan.nextLine();
+        
+        Message message = new Message(title, content, sender, reciever);
         this.setMessageList(message);
     }
     
@@ -156,24 +160,43 @@ public class User extends Person implements Relation{
      
     public void addPerson (){
         System.out.println("Ajouter un ami ");
-
-        System.out.println("Quel est son prénom ?");
-        String friendName = scan.nextLine();
-
-        System.out.println("Quel est son nom ?");
-        String friendLastname = scan.nextLine();
-
-        Friend friend = new Friend(friendName, friendLastname);
-        this.setFriendList(friend);
-
-        System.out.println("Votre ami " + friendName + " " + friendLastname + " a bien été ajouté.");
+        
+        UserList.showUsers();
+        System.out.println(this.getName());
+        System.out.println("Qui voulez-vous ajouter ?");
+        
+        int nbUser = Control.intControl("Veuillez entrer un numero valide!");
+        boolean friendExist = false; 
+       
+        User friend = UserList.getUserList().get(nbUser - 1);
+        for (User user : this.getFriendList()) {
+            if ((friend.getName().equals(user.getName())) && (friend.getLastname().equals(user.getLastname()))){
+                
+                 friendExist = true;
+                
+            }            
+        }
+        if (((this.getName().equals(friend.getName())) && (this.getLastname().equals(friend.getLastname())))){
+                
+                 friendExist = true;
+                
+            }
+        if (friendExist == false) {
+            this.setFriendList(friend);
+            System.out.println("Votre ami " + friend.getName() + " " + friend.lastname + " a bien été ajouté.");
+        } else {
+            System.out.println("Vous êtes déja ami avec cette personne .");
+        }
     }
+    
+    
+    
     
     public void showFriends () {
 
         if (this.getFriendList().size() > 0) {
     
-            for (Friend frnd : this.getFriendList()) {
+            for (User frnd : this.getFriendList()) {
 
                 System.out.println("Vous êtes ami avec : " + frnd.getName() + " " + frnd.getLastname() + ".");
             }

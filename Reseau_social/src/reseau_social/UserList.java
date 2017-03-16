@@ -61,16 +61,6 @@ public class UserList {
         }
     }
     
-    /*static public void displayMessagesByUser () {
-        
-        int j = 1;
-        for (User usr : UserList.getUserList()) {
-            for (Message mess : usr.getMessageList()) {
-                System.out.println(j + ". titre: " + mess.getTitle() + ". contenu: " + mess.getContent());
-                j++;
-            }
-        }
-    }*/
     
    static public int displayMessagesByUser (){
         Scanner scan = new Scanner(System.in);
@@ -118,5 +108,6 @@ public class UserList {
        }
        
    }
-       
+   
+   
 }

@@ -19,6 +19,8 @@ public class Choice {
      */
     static public User various(){
         
+        
+        
         User user = Menu.stepOne();
                
         boolean logout = false;
@@ -54,7 +56,7 @@ public class Choice {
                             break;
                         case "write": 
                             System.out.println("********************************");
-                            user.createMessage();
+                            user.createMessage(user.getName() + " " + user.getLastname());
                             System.out.println("********************************");
                             break;
                         case "read":
@@ -80,7 +82,7 @@ public class Choice {
                             break;
                         case "quit": 
                             System.out.println("********************************");
-                            System.out.println("Vous nous quittez déjà ");
+                            System.out.println("Vous nous quittez déjà ?");
                             if ((user.getClass().getSimpleName().equals("Moderateur_2")) || (user.getClass().getSimpleName().equals("Moderateur_1"))) {
                                 user.getPaid();
                             }

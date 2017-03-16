@@ -5,8 +5,9 @@
  */
 package reseau_social.gui;
 
-import javax.swing.JFrame;
 
+import javax.swing.JFrame;
+import java.awt.Graphics;
 /**
  *
  * @author adrien.juhem
@@ -19,8 +20,13 @@ public class Window extends JFrame{
         this.setSize(400, 400);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+              
+        //pan.setBackground(Color.PINK);
+       
+        this.setContentPane(new Panel());  
         this.setVisible(true);
-    }
-    
-    
+        
+        
+    }   
+  
 }

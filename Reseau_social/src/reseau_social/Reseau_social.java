@@ -7,7 +7,7 @@ package reseau_social;
 
 
 import java.util.Scanner;
-
+import reseau_social.gui.Window;
 /**
  *
  * @author Adrien.JUHEM
@@ -27,10 +27,9 @@ public class Reseau_social {
         char answer;
         
         
+       //Window wind = new Window();
        
-       
-        
-      
+ 
         /**
          * First: a do while loop to set a new user
          */
@@ -41,7 +40,7 @@ public class Reseau_social {
              */
                             
             User response = Choice.various(); 
-            UserList.setUserList(response);
+            
             
             for (User unit : UserList.getUserList()) {
                 System.out.println(unit.getName()); 

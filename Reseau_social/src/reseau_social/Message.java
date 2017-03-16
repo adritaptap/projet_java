@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class Message {
     private String title;
     private String content;
+    private String sender;
+    private String reciever;
 
     public String getTitle() {
         return title;
@@ -31,9 +33,32 @@ public class Message {
         this.content = content;
     }
 
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getReciever() {
+        return reciever;
+    }
+
+    public void setReciever(String reciever) {
+        this.reciever = reciever;
+    }
+
     public Message(String title, String content) {
         this.title = title;
         this.content = content;
     }   
+
+    public Message(String title, String content, String sender, String reciever) {
+        this.title = title;
+        this.content = content;
+        this.sender = sender;
+        this.reciever = reciever;
+    }
    
 }
