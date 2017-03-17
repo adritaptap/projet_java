@@ -120,9 +120,9 @@ public class User extends Person implements Relation{
             int i = 1;
             for (Message mess : this.getMessageList()) {
 
-                System.out.println("le message n°"+ i + " est : " + mess.getTitle() + " destiné à " + mess.getReciever() );
+                System.out.println("le message n°"+ i + " est : " + mess.getTitle());
+                System.out.println("De : " + mess.getSender() + " pour : " + mess.getReciever());
                 System.out.println("le contenu est : " + mess.getContent());
-                
                 i++;
             }                           
 
@@ -132,21 +132,33 @@ public class User extends Person implements Relation{
     }
     
     public void createMessage (String sender) {
-        System.out.println("Donnez un titre à votre message :");
-        String title = scan.nextLine();
-
-        System.out.println("Ecrivez votre message :");
-        String content = scan.nextLine();
-                
-        System.out.println("Quel est le nom du destinataire ?");
-        String reciever = scan.nextLine();
         
-        Message message = new Message(title, content, sender, reciever);
-        this.setMessageList(message);
+        if (this.getFriendList().size() > 0) {
+            
+            System.out.println("Donnez un titre à votre message :");
+            String title = scan.nextLine();
+
+            System.out.println("Ecrivez votre message :");
+            String content = scan.nextLine();
+            
+            this.showFriends();        
+            System.out.println("a qui souhaitez vous l'envoyer ?");
+
+            int nbReciever = Control.intControl("veuillez renter un numero valide !");
+            User reciever = this.getFriendList().get(nbReciever - 1);
+
+            Message message = new Message(title, content, sender, (reciever.getName() + " " + reciever.getLastname()));
+            this.setMessageList(message);
+            reciever.setMessageList(message);
+            
+        } else {
+            System.out.println("Vous n'avez pas encore d'amis a qui envoyer un message !");
+        }
+                
     }
     
      public void deleteMessage () {
-        
+         
         if (this.getMessageList().size() > 0) {
 
             System.out.println("quel message souhaitez vous effacer ?");
@@ -160,26 +172,20 @@ public class User extends Person implements Relation{
      
     public void addPerson (){
         System.out.println("Ajouter un ami ");
-        
         UserList.showUsers();
-        System.out.println(this.getName());
         System.out.println("Qui voulez-vous ajouter ?");
         
         int nbUser = Control.intControl("Veuillez entrer un numero valide!");
         boolean friendExist = false; 
-       
+
         User friend = UserList.getUserList().get(nbUser - 1);
         for (User user : this.getFriendList()) {
-            if ((friend.getName().equals(user.getName())) && (friend.getLastname().equals(user.getLastname()))){
-                
-                 friendExist = true;
-                
+            if ((friend.getName().equals(user.getName())) && (friend.getLastname().equals(user.getLastname()))){   
+                 friendExist = true; 
             }            
         }
-        if (((this.getName().equals(friend.getName())) && (this.getLastname().equals(friend.getLastname())))){
-                
-                 friendExist = true;
-                
+        if (((this.getName().equals(friend.getName())) && (this.getLastname().equals(friend.getLastname())))){     
+                 friendExist = true; 
             }
         if (friendExist == false) {
             this.setFriendList(friend);
@@ -189,24 +195,62 @@ public class User extends Person implements Relation{
         }
     }
     
-    
+    public void removeFriends (){
+        System.out.println("Supprimer un ami ");
+        
+        this.showFriends();
+        System.out.println("Qui voulez-vous supprimer ?");
+        int nbfriend = Control.intControl("Veuillez entrer un numero valide!");
+        this.getFriendList().remove(nbfriend - 1);
+        System.out.println("Vous n'êtes plus ami avec cette personne.");
+        
+    }
     
     
     public void showFriends () {
 
         if (this.getFriendList().size() > 0) {
-    
+            int i = 1;
             for (User frnd : this.getFriendList()) {
 
-                System.out.println("Vous êtes ami avec : " + frnd.getName() + " " + frnd.getLastname() + ".");
+                System.out.println(i + ". Vous êtes ami avec : " + frnd.getName() + " " + frnd.getLastname() + ".");
             }
 
         } else {
             System.out.println("Vous n'avez aucun amis pour le moment");
         }
     }
-
-    void getPaid() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void getPaid(){};
+    
+    public void Search () {
+        
+        System.out.println("Systeme de recherche :");
+        System.out.println();
+        System.out.println("Entrer un prenom");
+        String SearchName = scan.nextLine();
+        System.out.println("Entrer un nom");
+        String SearchLastname = scan.nextLine();
+        String message = "Cette personne n'est pas inscrite sur le site.";
+ 
+        
+        for (User user : UserList.getUserList()) {
+            
+            if ((user.getName().equals(SearchName)) && (user.getLastname().equals(SearchLastname))){   
+                message = "Cette personne inscrite sur ce site mais vous n'êtes pas amis avec elle.";
+                
+            }            
+        }
+        
+        for (User friend : this.getFriendList()) {
+            
+            if ((friend.getName().equals(SearchName)) && (friend.getLastname().equals(SearchLastname))){   
+                message = "Vous êtes ami avec cette peronne.";
+                
+            }            
+        }
+        
+        System.out.println(message);
+        
     }
+ 
 }

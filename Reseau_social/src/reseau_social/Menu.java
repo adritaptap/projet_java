@@ -20,14 +20,16 @@ public class Menu {
     
         System.out.println("Gestion de votre compte : ");
         System.out.println("Que voulez-vous faire ? ");
-                
+        System.out.println();        
         System.out.println("Afficher votre profil ? /////////////////// 'profile'");
         System.out.println("Modifier vos infos personnelles ? ///////// 'setting'");
+        System.out.println("Faire une recherche ? ///////////////////// 'search'");
         System.out.println("Ecrire un message ? /////////////////////// 'write'");
         System.out.println("Effacer un message ? ////////////////////// 'remove'");
         System.out.println("Afficher un message ? ///////////////////// 'read'");
         System.out.println("Ajouter un ami ? ////////////////////////// 'add'");
-        System.out.println("Afficher le nom d’un ami ? //////////////// 'friends'");
+        System.out.println("Supprimer un ami ? //////////////////////// 'delete'");
+        System.out.println("Afficher votre liste d'ami ? ////////////// 'friends'");
         System.out.println("Sortir de la gestion de votre compte ? //// 'quit'");
          
         

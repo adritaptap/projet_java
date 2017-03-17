@@ -70,9 +70,19 @@ public class Choice {
                             user.deleteMessage();
                             System.out.println("********************************");
                             break;
+                        case "search": 
+                            System.out.println("********************************");
+                            user.Search();
+                            System.out.println("********************************");
+                            break;
                         case "add": 
                             System.out.println("********************************");
                             user.addPerson();
+                            System.out.println("********************************");
+                            break;
+                        case "delete":
+                            System.out.println("********************************");
+                            user.removeFriends();
                             System.out.println("********************************");
                             break;
                         case "friends": 
