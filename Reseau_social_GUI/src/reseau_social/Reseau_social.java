@@ -29,7 +29,7 @@ public class Reseau_social {
         char answer;
         User adrien = new User("adrien", "juhem", 1988);
         UserList.setUserList(adrien);
-        //Index wind = new Index();
+        Index wind = new Index();
         // Panneau pann = new Panneau();
  
         /**
