@@ -25,7 +25,10 @@ public class Ceo extends Employee implements Relation {
     public Ceo(int pay, String contract) {
         super(pay, contract);
     }
-    
+
+    public Ceo(int pay) {
+        super(pay);
+    }
     public void addPerson() { 
         
             

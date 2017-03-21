@@ -104,10 +104,10 @@ public class Menu {
 
         User user = null;  
             
-            for (User us : UserList.getUserList()) {
+            for (Person us : UserList.getUserList()) {
 
                 if ((us.getName().equals(name)) && (us.getLastname().equals(lastname))) {
-                    user = us;
+                    user = (User) us;
                     System.out.println("Bon retour parmis nous !");
                     return user;
                 }

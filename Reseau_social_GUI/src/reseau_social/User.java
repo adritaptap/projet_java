@@ -178,7 +178,7 @@ public class User extends Person implements Relation{
         int nbUser = Control.intControl("Veuillez entrer un numero valide!");
         boolean friendExist = false; 
 
-        User friend = UserList.getUserList().get(nbUser - 1);
+        User friend = (User) UserList.getUserList().get(nbUser - 1);
         for (User user : this.getFriendList()) {
             if ((friend.getName().equals(user.getName())) && (friend.getLastname().equals(user.getLastname()))){   
                  friendExist = true; 
@@ -233,7 +233,7 @@ public class User extends Person implements Relation{
         String message = "Cette personne n'est pas inscrite sur le site.";
  
         
-        for (User user : UserList.getUserList()) {
+        for (Person user : UserList.getUserList()) {
             
             if ((user.getName().equals(SearchName)) && (user.getLastname().equals(SearchLastname))){   
                 message = "Cette personne inscrite sur ce site mais vous n'êtes pas amis avec elle.";

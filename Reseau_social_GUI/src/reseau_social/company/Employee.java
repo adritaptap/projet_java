@@ -22,6 +22,10 @@ public class Employee extends Person implements Salaried{
         this.pay = pay;
         this.contract = contract;
     }
+
+    public Employee(int pay) {
+        this.pay = pay;
+    }
     
     public Employee() {
     }

@@ -15,21 +15,21 @@ import java.util.Scanner;
 public class UserList {
     
     
-    static ArrayList<User> userList = new ArrayList();
+    static ArrayList<Person> userList = new ArrayList();
 
     public UserList() {
     }  
     
-    static public ArrayList<User> getUserList() {
+    static public ArrayList<Person> getUserList() {
         return userList;
     }
 
-    static public void setUserList(User user) {
+    static public void setUserList(Person user) {
         UserList.userList.add(user);
     }
     static public void showUsers (){
         int i = 1;
-        for(User user : UserList.getUserList()) {
+        for(Person user : UserList.getUserList()) {
             System.out.println("amis N°" + i + " : " + user.getName() + " " + user.getLastname());
             i++;
         }
@@ -62,7 +62,7 @@ public class UserList {
     }
     
     
-   static public int displayMessagesByUser (){
+   /*static public int displayMessagesByUser (){
         Scanner scan = new Scanner(System.in);
         int j = 1;   
         int nbUser = 0;
@@ -74,7 +74,7 @@ public class UserList {
             
             int nb = nbUser - 1;
             
-            User usr  = UserList.getUserList().get(nb);
+            Person usr  = UserList.getUserList().get(nb);
             for (Message mess : usr.getMessageList()) {
                 System.out.println(j + ". titre: " + mess.getTitle() + ". contenu: " + mess.getContent());
                 j++;
@@ -84,9 +84,9 @@ public class UserList {
             System.out.println("Il n'y a pas d'utilisateur à supprimer");
         }
         return nbUser;
-    }
+    }/*
    
-   static public void removeMessageByUser () {
+   /*static public void removeMessageByUser () {
        
        Scanner scan = new Scanner(System.in);  
        
@@ -98,7 +98,7 @@ public class UserList {
            
            int nbMess = nbMessage - 1;
 
-           User usr = UserList.getUserList().get(nbUser - 1);
+           Person usr = UserList.getUserList().get(nbUser - 1);
            usr.getMessageList().remove(nbMess);
            
            System.out.println("Le message a bien été effacé."); 
@@ -107,7 +107,7 @@ public class UserList {
            System.out.println("Il n'y a pas d'utilisateur à supprimer");
        }
        
-   }
+   }*/
    
    
 }

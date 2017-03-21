@@ -102,7 +102,7 @@ public class Choice {
                         case "mod mess":
                             System.out.println("********************************");
                             if ((user.getClass().getSimpleName().equals("Moderateur_2")) || (user.getClass().getSimpleName().equals("Moderateur_1"))) {
-                             UserList.removeMessageByUser();
+                             //UserList.removeMessageByUser();
                             } else {
                                 System.out.println("Vous ne disposez pas des droits necessaires ");
                             }                            

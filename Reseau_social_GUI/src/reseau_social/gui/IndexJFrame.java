@@ -5,6 +5,8 @@
  */
 package reseau_social.gui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author adrien.juhem
@@ -16,6 +18,11 @@ public class IndexJFrame extends javax.swing.JFrame {
      */
     public IndexJFrame() {
         initComponents();
+        this.setTitle("Index");
+        this.setSize(650, 450);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
     
     /**
@@ -33,13 +40,16 @@ public class IndexJFrame extends javax.swing.JFrame {
         check1 = new javax.swing.JRadioButton();
         check2 = new javax.swing.JRadioButton();
         check3 = new javax.swing.JRadioButton();
-        button1 = new java.awt.Button();
+        validate = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(80, 83, 85));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(java.awt.Color.darkGray);
 
         jLabel1.setBackground(new java.awt.Color(127, 160, 216));
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Bienvenue sur le site Loopr");
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("Bienvenue sur le logiciel Loopr");
         jLabel1.setMaximumSize(new java.awt.Dimension(154, 60));
 
         jLabel2.setText("Que souhaiter vous faire :");
@@ -56,40 +66,48 @@ public class IndexJFrame extends javax.swing.JFrame {
         check2.setText("Vous inscrire");
 
         bg.add(check3);
-        check3.setText("acceder au service entreprise");
+        check3.setText("afficher les utilisateurs");
         check3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 check3ActionPerformed(evt);
             }
         });
 
-        button1.setLabel("button1");
+        validate.setText("validate");
+        validate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(validate)
+                .addGap(227, 227, 227))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+                        .addGap(181, 181, 181)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
                             .addComponent(check1)
                             .addComponent(check2)
-                            .addComponent(check3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(check3)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(169, Short.MAX_VALUE))
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(check1)
@@ -97,9 +115,9 @@ public class IndexJFrame extends javax.swing.JFrame {
                 .addComponent(check2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(check3)
-                .addGap(25, 25, 25)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(validate)
+                .addGap(102, 102, 102))
         );
 
         pack();
@@ -107,13 +125,26 @@ public class IndexJFrame extends javax.swing.JFrame {
 
     private void check1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check1ActionPerformed
         // TODO add your handling code here:
-         System.out.println("connexion");
-         Connexion connexion = new Connexion();
+         
     }//GEN-LAST:event_check1ActionPerformed
 
     private void check3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_check3ActionPerformed
+
+    private void validateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateActionPerformed
+        if (check1.isSelected()) {
+            System.out.println("connexion");
+            ConnexionJFrame connexion = new ConnexionJFrame();           
+        } else if (check2.isSelected()) {
+            System.out.println("inscription");
+            Inscritpion inscritpion = new Inscritpion();
+        } else {
+            System.out.println("UserList");
+            UserlListJFrame userList = new UserlListJFrame();
+        }
+        this.setVisible(false);
+    }//GEN-LAST:event_validateActionPerformed
    
     /**
      * @param args the command line arguments
@@ -154,11 +185,11 @@ public class IndexJFrame extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg;
-    private java.awt.Button button1;
     private javax.swing.JRadioButton check1;
     private javax.swing.JRadioButton check2;
     private javax.swing.JRadioButton check3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JToggleButton validate;
     // End of variables declaration//GEN-END:variables
 }
