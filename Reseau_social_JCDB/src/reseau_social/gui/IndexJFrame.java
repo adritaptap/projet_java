@@ -6,6 +6,7 @@
 package reseau_social.gui;
 
 import javax.swing.JFrame;
+import reseau_social.database.Users;
 
 /**
  *
@@ -141,6 +142,7 @@ public class IndexJFrame extends javax.swing.JFrame {
             Inscritpion inscritpion = new Inscritpion();
         } else {
             System.out.println("UserList");
+            Users.getList();
             UserlListJFrame userList = new UserlListJFrame();
         }
         this.setVisible(false);
