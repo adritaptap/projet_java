@@ -7,9 +7,7 @@ package reseau_social;
 
 
 import java.util.Scanner;
-import reseau_social.gui.Index;
-import reseau_social.gui.Panneau;
-import reseau_social.gui.Window;
+
 /**
  *
  * @author Adrien.JUHEM
@@ -23,6 +21,7 @@ public class Reseau_social {
         /**
          * Some variables are created to start
          */      
+        
         
         Scanner scan = new Scanner(System.in);
         

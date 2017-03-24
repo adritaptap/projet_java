@@ -7,6 +7,7 @@ package reseau_social;
 
 import reseau_social.company.MenuCompany;
 import java.util.Scanner;
+import reseau_social.database.Users;
 
 /**
  *
@@ -58,13 +59,13 @@ public class Menu {
             System.exit(0);
         }
     }    
-    static User stepOne () {
+   /* static User stepOne () {
         Scanner scan = new Scanner(System.in);
         Menu.start();
         User user = Menu.CheckUser();
         if (user != null) {
             return user;
-        }
+        } else {
         System.out.println("Etes-vous Moderateur ? N/Y");
         char mederator = scan.next().charAt(0);
         scan.nextLine();
@@ -72,9 +73,9 @@ public class Menu {
            if (mederator == 'N'){ 
                
                 user = new User();
-                user.update();
-                user.presentation();
+                user.create();
                 UserList.setUserList(user);
+                Users.createtUser(user.getName(), user.getLastname(), user.getYearOfBirth(), user.getClass().getSimpleName());
                 return user;
            
            } else {
@@ -84,60 +85,35 @@ public class Menu {
                
                 if(nbModerator == 2) {
                     user = new Moderateur_2();
-                    user.update();
-                    user.presentation();
+                    user.create();
+                    Users.createtUser(user.getName(), user.getLastname(), user.getYearOfBirth(), user.getClass().getSimpleName());
                     UserList.setUserList(user);
                     return user;
                 } else {
                    user = new Moderateur_1();
-                    user.update();
-                    user.presentation();
+                    user.create();
                     UserList.setUserList(user);
+                    Users.createtUser(user.getName(), user.getLastname(), user.getYearOfBirth(), user.getClass().getSimpleName());
                     return user;
-                }
-                
+                }           
            }
         }
+    }*/
       
     
-    static public User CheckUser() {
+    static public User CheckUser(String name, String lastname) {
 
-        Scanner scan = new Scanner(System.in);
+      
+   
         User user = null;
-        boolean connexion  = true;
-        do {
-        System.out.println("Etes-vous Deja inscrit ? N/Y");
-        char inscrit = scan.next().charAt(0);
-        scan.nextLine();
-        if (inscrit == 'Y'){
+        int verifUser = Users.getId(name, lastname);
 
-            System.out.println("Connexion");
-            System.out.println("Veuillez entrer votre prénom:");
-            String name = scan.nextLine();
-            System.out.println("Veuillez entrer votre nom:");
-            String lastname = scan.nextLine();
-            
-            for (User us : UserList.getUserList()) {
-
-                if ((us.getName().equals(name)) || (us.getLastname().equals(lastname))) {
-                    connexion = false;
-                    user = us;
+                if (verifUser > 0) {
+                    
+                    user = Users.getUserById(verifUser);
                     System.out.println("Bon retour parmis nous !");
                     return user;
-                } else {
-                   
-                    
                 }
-            }
-            if(user == null) {
-                System.out.println("Désolé vous n'êtes pas connu de nos services !");
-            }
-            
-        }
-        else {
-            connexion = false;
-        }
-        } while (connexion == true);
         return user;
     }
 }

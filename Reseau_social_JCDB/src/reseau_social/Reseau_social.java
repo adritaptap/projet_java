@@ -7,9 +7,10 @@ package reseau_social;
 
 
 import java.util.Scanner;
-import reseau_social.gui.Index;
-import reseau_social.gui.Panneau;
-import reseau_social.gui.Window;
+
+import reseau_social.database.Connect;
+import reseau_social.database.Users;
+import reseau_social.gui.IndexJFrame;
 /**
  *
  * @author Adrien.JUHEM
@@ -20,44 +21,10 @@ public class Reseau_social {
      * @param args the command line arguments
      */
     public static void main(String[] args) {  
-        /**
-         * Some variables are created to start
-         */      
-        
-        Scanner scan = new Scanner(System.in);
-        
-        char answer;
-        User adrien = new User("adrien", "juhem", 1988);
-        UserList.setUserList(adrien);
-        //Index wind = new Index();
-        // Panneau pann = new Panneau();
- 
-        /**
-         * First: a do while loop to set a new user
-         */
-        do {       
-            /**
-             * choice Question/Answer 
-             * a do while loop to repeat questions until QUIT
-             */
-                            
-            User response = Choice.various(); 
-            
-            
-           /* for (User unit : UserList.getUserList()) {
-                System.out.println(unit.getName()); 
-            } */
-                      
-            do {
-                
-                 answer = Menu.logoutChoice();
-                 
-            } while(answer != 'Y' && answer != 'N');
-                         
-        } while(answer == 'Y');
-        
-        
-       System.out.println("Vous voulez partir ? A bientôt !");
+        User user = new User("toto", "titi", 1999);
+        UserList.setUserList(user);
+        IndexJFrame start = new IndexJFrame();
+        Users.getList();
     }
 }
     

@@ -9,6 +9,7 @@ package reseau_social;
 import reseau_social.company.Relation;
 import java.util.ArrayList;
 import java.util.Scanner;
+import reseau_social.database.Users;
 
 
 /**
@@ -56,34 +57,36 @@ public class User extends Person implements Relation{
         return friendList;
     }
     
-    public User create(){           
+    public void create(){           
     
-            System.out.println("Veuillez vous enregistrer");         
-            System.out.println("Veuillez saisir un prenom :");
-            String nameUser = scan.nextLine();
-            
-            System.out.println("Veuillez saisir votre nom de famille :");
-            String lastnameUser = scan.nextLine();
-            
-            System.out.println("Veuillez saisir votre date de naissance :");
-            int yearOfBirthUser = Control.intControl("Veuillez rentrer une date !");
-            
-            User user = new User (nameUser, lastnameUser, yearOfBirthUser);
-            
-            return user; 
+            System.out.println("Veuillez saisir votre prenom : ");
+
+        String changeName = scan.nextLine();
+
+        System.out.println("Veuillez saisir votre nom : ");
+        String changeLastname = scan.nextLine();
+
+        System.out.println("veuillez saisir votre année de naissance : ");
+        int changeYearOfBirth = 0;
+
+        try {
+            changeYearOfBirth = scan.nextInt();
+            scan.nextLine();
+            this.setYearOfBirth(changeYearOfBirth);
+        } catch (Exception e) {
+            changeYearOfBirth = Control.intControl("Veuillez entrer une date valide !");
+        }
+
+        this.setName(changeName);
+        this.setLastname(changeLastname);
     }
     public void show (){
-        System.out.println("Affichage de votre Profile ");
-
-        System.out.println("votre prénom est: " + this.getName());
-
-        System.out.println("votre nom est : " + this.getLastname()); 
-
-        System.out.println("vous êtes né(e) en " + this.getYearOfBirth());
+        Users.getUser(this.getName(), this.getLastname());
     }
   
     public void update (){
         
+        int userId = Users.getId(this.getName(), this.getLastname());
         System.out.println("Gestion de votre Profile ");
         System.out.println("Veuillez saisir votre prenom : ");
        
@@ -107,12 +110,10 @@ public class User extends Person implements Relation{
 
             this.setName(changeName);
             this.setLastname(changeLastname);
+            Users.updateUser(this.getName(), this.getLastname(), this.getYearOfBirth(), userId);
             
    }
-    
-    public void presentation () {
-        System.out.println("Bonjour " + this.getName() + " " + this.getLastname() + ", vous avez " + (2017 - this.getYearOfBirth()) + " ans");
-    }
+   
     
     public void showMessage (){
         if (this.getMessageList().size() > 0) {
@@ -172,27 +173,10 @@ public class User extends Person implements Relation{
      
     public void addPerson (){
         System.out.println("Ajouter un ami ");
-        UserList.showUsers();
+        Users.getList();
         System.out.println("Qui voulez-vous ajouter ?");
         
-        int nbUser = Control.intControl("Veuillez entrer un numero valide!");
-        boolean friendExist = false; 
-
-        User friend = UserList.getUserList().get(nbUser - 1);
-        for (User user : this.getFriendList()) {
-            if ((friend.getName().equals(user.getName())) && (friend.getLastname().equals(user.getLastname()))){   
-                 friendExist = true; 
-            }            
-        }
-        if (((this.getName().equals(friend.getName())) && (this.getLastname().equals(friend.getLastname())))){     
-                 friendExist = true; 
-            }
-        if (friendExist == false) {
-            this.setFriendList(friend);
-            System.out.println("Votre ami " + friend.getName() + " " + friend.lastname + " a bien été ajouté.");
-        } else {
-            System.out.println("Vous êtes déja ami avec cette personne .");
-        }
+     
     }
     
     public void removeFriends (){
@@ -233,13 +217,7 @@ public class User extends Person implements Relation{
         String message = "Cette personne n'est pas inscrite sur le site.";
  
         
-        for (User user : UserList.getUserList()) {
-            
-            if ((user.getName().equals(SearchName)) && (user.getLastname().equals(SearchLastname))){   
-                message = "Cette personne inscrite sur ce site mais vous n'êtes pas amis avec elle.";
-                
-            }            
-        }
+        
         
         for (User friend : this.getFriendList()) {
             
